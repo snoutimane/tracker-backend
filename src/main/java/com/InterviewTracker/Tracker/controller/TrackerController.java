@@ -135,8 +135,8 @@ public class TrackerController {
         return interviewService.createInterviews(interviews);
     }
 
-    @DeleteMapping("/delete/{empId}/{projectCode}")
-    public ResponseEntity<?> deleteInterviewById(@PathVariable Integer empId, @PathVariable String projectCode) {
+    @DeleteMapping("/delete/{empId}")
+    public ResponseEntity<?> deleteInterviewById(@PathVariable Integer empId) {
         try {
             interviewService.deleteInterviewById(empId);
             return ResponseEntity.ok("Interview deleted successfully");
@@ -146,22 +146,22 @@ public class TrackerController {
         }
     }
     
-    @PutMapping("/update")
-    public ResponseEntity<List<Interview>> updateInterviewsByEmpId(@RequestBody List<Interview> updatedInterviews) {
-        List<Optional<Interview>> updatedInterviewList = interviewService.updateInterviews(updatedInterviews);
-
-        // Check if any interview was not found (Optional is empty)
-        if (updatedInterviewList.stream().anyMatch(Optional::isEmpty)) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-
-        // Extract the interviews from the Optionals
-        List<Interview> resultInterviews = updatedInterviewList.stream()
-                .map(Optional::get)
-                .collect(Collectors.toList());
-
-        return new ResponseEntity<>(resultInterviews, HttpStatus.OK);
-    }
+//    @PutMapping("/update")
+//    public ResponseEntity<List<Interview>> updateInterviewsByEmpId(@RequestBody List<Interview> updatedInterviews) {
+//        List<Optional<Interview>> updatedInterviewList = interviewService.updateInterviews(updatedInterviews);
+//
+//        // Check if any interview was not found (Optional is empty)
+//        if (updatedInterviewList.stream().anyMatch(Optional::isEmpty)) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//
+//        // Extract the interviews from the Optionals
+//        List<Interview> resultInterviews = updatedInterviewList.stream()
+//                .map(Optional::get)
+//                .collect(Collectors.toList());
+//
+//        return new ResponseEntity<>(resultInterviews, HttpStatus.OK);
+//    }
 
 
 }

@@ -56,42 +56,42 @@ public class InterviewService {
         return interviewRepository.findByMentorName(mentorName);
     }
     
-    public List<Optional<Interview>> updateInterviews(List<Interview> updatedInterviews) {
-        List<Optional<Interview>> updatedInterviewList = new ArrayList<>();
-
-        for (Interview updatedInterview : updatedInterviews) {
-            Optional<Interview> existingInterview = interviewRepository.findByEmpId(updatedInterview.getEmpId());
-
-            if (existingInterview.isPresent()) {
-                Interview interviewToUpdate = existingInterview.get();
-
-                // Update the fields you want to modify
-                interviewToUpdate.setEmployeeName(updatedInterview.getEmployeeName());
-                interviewToUpdate.setEmail(updatedInterview.getEmail());
-                interviewToUpdate.setProjectName(updatedInterview.getProjectName());
-                interviewToUpdate.setProjectCode(updatedInterview.getProjectCode());
-                interviewToUpdate.setProjectManager(updatedInterview.getProjectManager());
-                interviewToUpdate.setProjectLocation(updatedInterview.getProjectLocation());
-                interviewToUpdate.setInterviewed(updatedInterview.getInterviewed());
-                interviewToUpdate.setInterviewDate(updatedInterview.getInterviewDate());
-                interviewToUpdate.setFeedback(updatedInterview.getFeedback());
-                interviewToUpdate.setFeedbackDescription(updatedInterview.getFeedbackDescription());
-                interviewToUpdate.setComment(updatedInterview.getComment());
-                interviewToUpdate.setStatus(updatedInterview.getStatus());
-                interviewToUpdate.setProposedDate(updatedInterview.getProposedDate());
-                interviewToUpdate.setMentorName(updatedInterview.getMentorName());
-                interviewToUpdate.setImage(updatedInterview.getImage());
-                // ... update other fields as needed
-
-                // Save the updated interview and add it to the list
-                updatedInterviewList.add(Optional.of(interviewRepository.save(interviewToUpdate)));
-            } else {
-                updatedInterviewList.add(Optional.empty()); // Or throw an exception indicating that the interview was not found
-            }
-        }
-
-        return updatedInterviewList;
-    }
+//    public List<Optional<Interview>> updateInterviews(List<Interview> updatedInterviews) {
+//        List<Optional<Interview>> updatedInterviewList = new ArrayList<>();
+//
+//        for (Interview updatedInterview : updatedInterviews) {
+//            Optional<Interview> existingInterview = interviewRepository.findByEmpId(updatedInterview.getEmpId());
+//
+//            if (existingInterview.isPresent()) {
+//                Interview interviewToUpdate = existingInterview.get();
+//
+//                // Update the fields you want to modify
+//                interviewToUpdate.setEmployeeName(updatedInterview.getEmployeeName());
+//                interviewToUpdate.setEmail(updatedInterview.getEmail());
+//                interviewToUpdate.setProjectName(updatedInterview.getProjectName());
+//                interviewToUpdate.setProjectCode(updatedInterview.getProjectCode());
+//                interviewToUpdate.setProjectManager(updatedInterview.getProjectManager());
+//                interviewToUpdate.setProjectLocation(updatedInterview.getProjectLocation());
+//                interviewToUpdate.setInterviewed(updatedInterview.getInterviewed());
+//                interviewToUpdate.setInterviewDate(updatedInterview.getInterviewDate());
+//                interviewToUpdate.setFeedback(updatedInterview.getFeedback());
+//                interviewToUpdate.setFeedbackDescription(updatedInterview.getFeedbackDescription());
+//                interviewToUpdate.setComment(updatedInterview.getComment());
+//                interviewToUpdate.setStatus(updatedInterview.getStatus());
+//                interviewToUpdate.setProposedDate(updatedInterview.getProposedDate());
+//                interviewToUpdate.setMentorName(updatedInterview.getMentorName());
+//                interviewToUpdate.setImage(updatedInterview.getImage());
+//                // ... update other fields as needed
+//
+//                // Save the updated interview and add it to the list
+//                updatedInterviewList.add(Optional.of(interviewRepository.save(interviewToUpdate)));
+//            } else {
+//                updatedInterviewList.add(Optional.empty()); // Or throw an exception indicating that the interview was not found
+//            }
+//        }
+//
+//        return updatedInterviewList;
+//    }
     
     
 }
